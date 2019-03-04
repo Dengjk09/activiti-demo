@@ -1,0 +1,34 @@
+server:
+  port: 6060
+
+spring:
+  profiles:
+    active: 6060
+
+#myHatis配置
+mybatis:
+  #mybatis的xml sql位置
+  mapper-locations: classpath:mapper/*Mapper.xml
+  #扫描实体包
+  type-aliases-package: com.dengjk.dsd.pojo
+  configuration:
+    map-underscore-to-camel-case: true  #开启驼峰命名
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+
+#在控制台打印sql语句(单独设置mapper包下的日志级别为debug)
+logging:
+  level:
+    com.dengjk.dsd.mapper: debug
+
+
+
+
+
+
+
+
+
+
