@@ -31,9 +31,9 @@ public class ActDeloy {
         RepositoryService repositoryService = defaultProcessEngine.getRepositoryService();
         /**获取部署对象*/
         Deployment deployment = repositoryService.createDeployment()
-                .addClasspathResource("bpm/qingjia.bpmn")
-                .addClasspathResource("bpm/qingjia.png")
-                .name("部门请假流程")
+                .addClasspathResource("bpm/qingjia2.bpmn")
+                .addClasspathResource("bpm/qingjia2.png")
+                .name("部门请假流程-流程变量")
                 .deploy();
 
         /**输出流程名称和流程id*/

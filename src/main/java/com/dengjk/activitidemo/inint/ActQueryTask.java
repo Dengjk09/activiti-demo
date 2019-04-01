@@ -2,7 +2,10 @@ package com.dengjk.activitidemo.inint;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
+import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.runtime.ProcessInstanceQuery;
 import org.activiti.engine.task.Task;
 import org.junit.Test;
 
@@ -22,6 +25,10 @@ public class ActQueryTask {
         /**获取TaskService对象*/
         TaskService taskService = defaultProcessEngine.getTaskService();
 
+        /**获取正在执行的任务对象*/
+        RuntimeService runtimeService = defaultProcessEngine.getRuntimeService();
+
+
         /**获取任务对象 获取当前人的任务列表*/
         List<Task> taskList = taskService.createTaskQuery()
                 .processDefinitionKey("holiday")
@@ -33,5 +40,19 @@ public class ActQueryTask {
             System.out.println("任务负责人:" + task.getAssignee());
             System.out.println("任务名称:" + task.getName());
         }
+
+        /**获取单条任务获取businessKey*/
+        Task task = taskService.createTaskQuery()
+                .processDefinitionKey("holiday")
+                .taskAssignee("zhangsan")
+                .singleResult();
+        /**获取流程实例对象,得到任务id*/
+        String processInstanceId = task.getProcessInstanceId();
+
+        /**获取processInstance对象*/
+        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+
+        /**获取到businessKey了对可以查询额外的提交的信息了*/
+        String businessKey = processInstance.getBusinessKey();
     }
 }
