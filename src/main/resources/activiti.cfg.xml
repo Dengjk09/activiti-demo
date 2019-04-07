@@ -7,12 +7,13 @@
 						http://www.springframework.org/schema/contex http://www.springframework.org/schema/context/spring-context.xsd
 						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <!--纯手工文件,没有与spring去整合-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-    <!-- 基本属性 url、user、password127.0.0.1 -->
-    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-    <property name="url" value="jdbc:mysql://localhost:3306/activiti?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true" />
-    <property name="username" value="root" />
-    <property name="password" value="root" />
+        <!-- 基本属性 url、user、password127.0.0.1 -->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/activiti?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
     </bean>
 
     <!-- 方式1 直接应用数据源的bean-->
