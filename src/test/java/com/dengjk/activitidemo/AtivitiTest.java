@@ -1,27 +1,26 @@
 package com.dengjk.activitidemo;
 
-import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.ProcessEngineConfiguration;
+import org.activiti.api.process.runtime.ProcessRuntime;
 import org.activiti.engine.RepositoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author Dengjk
  * @create 2019-02-21 22:53
  * @desc 与spring整合测试
  **/
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring/activiti-spring.xml")
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class AtivitiTest {
 
 
+
     @Autowired
-    private RepositoryService repositoryService;
+    private ProcessRuntime processRuntime;
 
 
     /**
@@ -29,7 +28,7 @@ public class AtivitiTest {
      */
     @Test
     public void test() {
-        System.out.println(repositoryService);
+        System.out.println(processRuntime);
     }
 
 }
